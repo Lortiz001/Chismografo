@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chismografía Interactiva</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+    <div class="container py-5">
+        <h1 class="text-center text-primary animate__animated animate__fadeInDown">Chismografía Interactiva</h1>
+        
+        <div id="formulario" class="mt-4">
+            <div class="mb-3">
+                <label class="form-label">Nombre:</label>
+                <input type="text" id="nombre" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Fecha de nacimiento (día y mes):</label>
+                <input type="text" id="fecha_nacimiento" class="form-control" placeholder="Ejemplo: 15/06">
+            </div>
+            <button class="btn btn-success" onclick="mostrarCuestionario()">Agregar al Chismógrafo</button>
+        </div>
+
+        <div id="cuestionario" class="mt-4 d-none">
+            <h3 class="text-center">Responde las siguientes preguntas:</h3>
+            <div id="preguntas"></div>
+            <button class="btn btn-primary mt-3" onclick="guardarRespuestas()">Guardar respuestas</button>
+        </div>
+
+        <button id="analizar" class="btn btn-warning mt-4 d-none" onclick="analizarGrupo()">Realizar análisis del grupo</button>
+        <div id="reporte" class="mt-4"></div>
+    </div>
+
+    <script>
+        const preguntas = [
+            { pregunta: "¿Qué actividad disfrutas más?", opciones: ["Dibujar", "Explorar", "Tocar un instrumento", "Resolver acertijos", "Hacer amigos"] },
+            { pregunta: "¿Qué materia prefieres?", opciones: ["Arte", "Educación Física", "Música", "Matemáticas", "Ciencias Sociales"] },
+            { pregunta: "¿Cuál es tu lugar ideal para divertirte?", opciones: ["Museos", "Montañas", "Conciertos", "Biblioteca", "Fiestas"] },
+            { pregunta: "Si fueras un animal, ¿cuál serías?", opciones: ["Gato", "Águila", "Delfín", "Búho", "Perro"] },
+            { pregunta: "¿Qué tipo de películas te gustan más?", opciones: ["Animadas", "Aventura", "Musicales", "Documentales", "Comedias"] },
+            { pregunta: "¿Cómo te describes en grupo?", opciones: ["Creativo", "Atrevido", "Expresivo", "Analítico", "Sociable"] },
+            { pregunta: "¿Qué prefieres hacer en tu tiempo libre?", opciones: ["Pintar", "Explorar la ciudad", "Escuchar música", "Leer", "Salir con amigos"] },
+            { pregunta: "Si pudieras aprender algo nuevo, ¿qué sería?", opciones: ["Diseño gráfico", "Escalar montañas", "Tocar un instrumento", "Resolver acertijos", "Psicología"] },
+            { pregunta: "¿Qué superpoder te gustaría tener?", opciones: ["Crear arte con la mente", "Volar", "Tener oído absoluto", "Leer mentes", "Hablar todos los idiomas"] },
+            { pregunta: "¿Cómo te describen tus amigos?", opciones: ["Soñador", "Aventurero", "Talentoso", "Inteligente", "Divertido"] },
+            { pregunta: "Si pudieras viajar en el tiempo, ¿qué harías?", opciones: ["Ir al Renacimiento", "Explorar el futuro", "Ir a un concierto histórico", "Estudiar con grandes científicos", "Vivir en una sociedad utópica"] },
+            { pregunta: "¿Qué color te gusta más?", opciones: ["Morado", "Verde", "Azul", "Gris", "Rojo"] },
+            { pregunta: "Si fueras un objeto, ¿cuál serías?", opciones: ["Pincel", "Brújula", "Guitarra", "Libro", "Teléfono"] },
+            { pregunta: "¿Qué te hace más feliz?", opciones: ["Crear algo nuevo", "Viajar", "Escuchar música", "Aprender", "Pasar tiempo con amigos"] },
+            { pregunta: "¿Cómo te gustaría ser recordado?", opciones: ["Como un gran artista", "Como un aventurero valiente", "Como un músico talentoso", "Como un genio", "Como una persona que unió a todos"] },
+            { pregunta: "¿Qué prefieres en una fiesta?", opciones: ["Decorar", "Contar historias", "Bailar", "Jugar juegos mentales", "Hablar con todos"] },
+            { pregunta: "¿Cuál es tu género de libro favorito?", opciones: ["Cómic", "Aventura", "Biografía de músicos", "Ciencia ficción", "Romance"] },
+            { pregunta: "Si fueras un personaje de caricatura, ¿quién serías?", opciones: ["Un dibujante", "Un explorador", "Un cantante", "Un inventor", "El alma de la fiesta"] },
+            { pregunta: "¿Qué harías con un millón de dólares?", opciones: ["Invertir en arte", "Viajar", "Comprar instrumentos", "Investigar", "Hacer fiestas"] }
+        ];
+        
+        const respuestas = [];
+        function mostrarCuestionario() {
+            document.getElementById("cuestionario").classList.remove("d-none");
+            let html = "";
+            preguntas.forEach((p, index) => {
+                html += `<div class='mb-3'><label>${p.pregunta}</label>`;
+                p.opciones.forEach(op => {
+                    html += `<div><input type='radio' name='p${index}' value='${op}'> ${op}</div>`;
+                });
+                html += "</div>";
+            });
+            document.getElementById("preguntas").innerHTML = html;
+        }
+    </script>
+</body>
+</html>
