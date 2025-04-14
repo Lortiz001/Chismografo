@@ -10,7 +10,7 @@
 </head>
 <body class="bg-light">
     <div class="container py-5">
-        <h1 class="text-center text-primary animate__animated animate__fadeInDown">Chismografía Interactiva</h1>
+        <h1 class="text-center text-primary animate__animated animate__fadeInDown">TE PARECES A..</h1>
         
         <div id="formulario" class="mt-4">
             <div class="mb-3">
@@ -18,10 +18,14 @@
                 <input type="text" id="nombre" class="form-control">
             </div>
             <div class="mb-3">
-                <label class="form-label">Fecha de nacimiento (día y mes):</label>
-                <input type="text" id="fecha_nacimiento" class="form-control" placeholder="Ejemplo: 15/06">
+                <label class="form-label">Día de nacimiento (día):</label>
+                <input type="text" id="dia_nacimiento" class="form-control" placeholder="Ejemplo: 15">
             </div>
-            <button class="btn btn-success" onclick="mostrarCuestionario()">Agregar al Chismógrafo</button>
+              <div class="mb-3">
+                <label class="form-label">Mes de nacimiento (mes):</label>
+                <input type="text" id="mes_nacimiento" class="form-control" placeholder="Ejemplo: 06">
+            </div>            
+        <button class="btn btn-success" onclick="mostrarCuestionario()">Agregar al Test</button>
         </div>
 
         <div id="cuestionario" class="mt-4 d-none">
